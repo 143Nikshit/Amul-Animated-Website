@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Amul COOL | The Real Taste of India - Interactive Experience</title>
+  <meta name="description" content="Immerse yourself in the ultra-smooth scroll experience of Amul COOL Exotic Rose Flavour, crafted with real milk and royal Indian essence.">
+  
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="cool.png">
+  
+  <!-- CSS Stylesheet -->
+  <link rel="stylesheet" href="style.css">
+  
+  <!-- CDNs: Lenis Smooth Scroll & GSAP 3 + ScrollTrigger -->
+  <script src="https://unpkg.com/lenis@1.1.18/dist/lenis.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+</head>
+<body>
+
+  <!-- Floating Rose Petal Particle Canvas -->
+  <canvas id="petals-canvas"></canvas>
+
+  <!-- =========================================================================
+       PRELOADER OVERLAY
+       ========================================================================= -->
+  <div id="preloader" aria-live="polite">
+    <div class="preloader-content">
+      <div class="preloader-logo-wrap">
+        <div class="preloader-bottle-icon">
+          <svg viewBox="0 0 24 24">
+            <path d="M7 2v2h1v3.2c-1.8.8-3 2.6-3 4.8v9c0 1.7 1.3 3 3 3h8c1.7 0 3-1.3 3-3v-9c0-2.2-1.2-4-3-4.8V4h1V2H7zm4 4h2v2h-2V6zm-2 5h6c.6 0 1 .4 1 1v2.5c-.9.5-2.1.8-3.5.8s-2.6-.3-3.5-.8V12c0-.6.4-1 1-1z"/>
+          </svg>
+        </div>
+      </div>
+      <h2 class="preloader-title">Amul <span>COOL</span></h2>
+      <p class="preloader-subtitle">Chilling the Milk Vortex...</p>
+      
+      <div class="preloader-progress-track">
+        <div class="preloader-progress-bar" id="preloader-progress"></div>
+      </div>
+      <div class="preloader-counter" id="preloader-counter">0%</div>
+    </div>
+  </div>
+
+  <!-- =========================================================================
+       FIXED HEADER NAVIGATION
+       ========================================================================= -->
+  <header class="site-header" id="site-header">
+    <a href="#" class="brand-logo" aria-label="Amul COOL Home">
+      <span class="brand-badge">AMUL</span>
+      <span class="brand-title">COOL <span>GOLD</span></span>
+    </a>
+
+    <nav aria-label="Main Navigation">
+      <ul class="nav-links">
+        <li><a href="#hero-sequence" class="nav-link">Experience</a></li>
+        <li><a href="#flavours" class="nav-link">Flavours</a></li>
+        <li><a href="#craft" class="nav-link">Craft & Purity</a></li>
+        <li><a href="#finale" class="nav-link">Order Chilled</a></li>
+      </ul>
+    </nav>
+
+    <div class="header-actions">
+      <a href="#finale" class="btn-primary">
+        <span>Order Now</span>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+          <line x1="5" y1="12" x2="19" y2="12"></line>
+          <polyline points="12 5 19 12 12 19"></polyline>
+        </svg>
+      </a>
+    </div>
+  </header>
+
+  <!-- =========================================================================
+       HERO PINNED SCROLL SEQUENCE (GSAP + LENIS + CANVAS)
+       ========================================================================= -->
+  <section class="scroll-sequence-section" id="hero-sequence">
+    <div class="sticky-viewport">
+      <!-- High-resolution interactive sequence canvas -->
+      <canvas id="amul-canvas"></canvas>
+      
+      <!-- Subtle ambient lighting glow -->
+      <div class="canvas-ambient-glow"></div>
+
+      <!-- Synchronized narrative floating overlays -->
+      <div class="sequence-overlays">
+        
+        <!-- STEP 1: Awakening (Frames 0 - 50) -->
+        <div class="overlay-step overlay-step-1" id="step-1">
+          <div class="story-card story-card-hero">
+            <div class="story-tag">
+              <span class="story-tag-dot"></span>
+              The Taste of India
+            </div>
+            <h1 class="hero-main-title">
+              Pure Milk.<br>
+              <span class="highlight-rose">Royal Sensation.</span>
+            </h1>
+            <p class="story-desc">
+              Scroll down to witness the hydrodynamic plunge of India's favorite chilled flavoured beverage.
+            </p>
+            <div class="scroll-indicator-pill">
+              <svg viewBox="0 0 24 24">
+                <path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z"/>
+              </svg>
+              <span>Scroll to Splash</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- STEP 2: The Cream Splash (Frames 50 - 110) -->
+        <div class="overlay-step overlay-step-2" id="step-2">
+          <div class="story-card">
+            <div class="story-tag">
+              <span class="story-tag-dot"></span>
+              Hydrodynamic Purity
+            </div>
+            <h2 class="story-title">
+              Velvety Cream <span class="highlight-rose">Erupts in Rhythm</span>
+            </h2>
+            <p class="story-desc">
+              100% pasteurized fresh dairy whipped into aerodynamic crests, capturing the natural richness of authentic Indian cow milk.
+            </p>
+            <div class="story-badges">
+              <div class="story-badge-item">🥛 100% Real Dairy</div>
+              <div class="story-badge-item">✨ Rich Calcium</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- STEP 3: Bottle Plunge (Frames 110 - 180) -->
+        <div class="overlay-step overlay-step-3" id="step-3">
+          <div class="story-card">
+            <div class="story-tag">
+              <span class="story-tag-dot"></span>
+              Chilled to 4°C
+            </div>
+            <h2 class="story-title">
+              The Legend Descends <span class="highlight-rose">Amul COOL Gold</span>
+            </h2>
+            <p class="story-desc">
+              Infused with distilled damask rose petals and pure cane sweetness, enveloped inside a sealed protective bottle designed to preserve icy coolness.
+            </p>
+            <div class="story-badges">
+              <div class="story-badge-item">🌹 Damask Rose Petals</div>
+              <div class="story-badge-item">⚡ Instant Rehydration</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- STEP 4: Perfect Landing (Frames 180 - 240) -->
+        <div class="overlay-step overlay-step-4" id="step-4">
+          <div class="story-card story-card-settled">
+            <div class="settled-info">
+              <h3>Amul COOL Gold Rose</h3>
+              <p>Ready to drink anytime, anywhere. Experience royal refreshment.</p>
+            </div>
+            <div class="settled-actions">
+              <a href="#flavours" class="btn-primary">Explore All Flavours</a>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- =========================================================================
+       SECTION: FLAVOURS SYMPHONY
+       ========================================================================= -->
+  <section class="section-flavours" id="flavours">
+    <div class="section-header">
+      <span class="section-eyebrow">The Royal Collection</span>
+      <h2 class="section-headline">Indulge in Every Sensation</h2>
+      <p class="section-subtext">
+        Every bottle of Amul COOL is a crafted masterpiece, marrying wholesome fresh dairy with exotic ingredients.
+      </p>
+    </div>
+
+    <div class="flavour-cards-grid">
+      
+      <!-- Card 1: Exotic Rose (Active/Featured) -->
+      <div class="flavour-card active-flavour" data-tilt>
+        <span class="flavour-badge-pill">Signature</span>
+        <div class="flavour-visual-circle" style="background: radial-gradient(circle, #ffe3ec 0%, #ffc2d4 100%);">
+          <img src="cool.png" alt="Amul COOL Rose Bottle" loading="lazy">
+        </div>
+        <h3 class="flavour-card-title">Exotic Rose</h3>
+        <p class="flavour-card-desc">
+          Delicate, fragrant damask rose aroma married with chilled, velvety homogenized milk.
+        </p>
+        <div class="flavour-taste-tags">
+          <span class="flavour-tag">Aromatic</span>
+          <span class="flavour-tag">Floral</span>
+          <span class="flavour-tag">Smooth</span>
+        </div>
+      </div>
+
+      <!-- Card 2: Royal Kesar Pista -->
+      <div class="flavour-card" data-tilt>
+        <div class="flavour-visual-circle" style="background: radial-gradient(circle, #fff7db 0%, #fae69e 100%);">
+          <img src="cool.png" alt="Amul COOL Kesar" style="filter: hue-rotate(50deg) saturate(1.2);" loading="lazy">
+        </div>
+        <h3 class="flavour-card-title">Kesar Pista</h3>
+        <p class="flavour-card-desc">
+          Kashmiri saffron strands blended with crushed crunchy green pistachios in rich cream.
+        </p>
+        <div class="flavour-taste-tags">
+          <span class="flavour-tag">Saffron</span>
+          <span class="flavour-tag">Nutty</span>
+          <span class="flavour-tag">Golden</span>
+        </div>
+      </div>
+
+      <!-- Card 3: Elaichi Supreme -->
+      <div class="flavour-card" data-tilt>
+        <div class="flavour-visual-circle" style="background: radial-gradient(circle, #eaf8e9 0%, #c4eec2 100%);">
+          <img src="cool.png" alt="Amul COOL Elaichi" style="filter: hue-rotate(95deg) saturate(1.1);" loading="lazy">
+        </div>
+        <h3 class="flavour-card-title">Elaichi Royal</h3>
+        <p class="flavour-card-desc">
+          Fragrant green cardamom pods gently simmered to unlock a soothing, timeless heritage note.
+        </p>
+        <div class="flavour-taste-tags">
+          <span class="flavour-tag">Cardamom</span>
+          <span class="flavour-tag">Spiced</span>
+          <span class="flavour-tag">Digestive</span>
+        </div>
+      </div>
+
+      <!-- Card 4: Cold Coffee Chill -->
+      <div class="flavour-card" data-tilt>
+        <div class="flavour-visual-circle" style="background: radial-gradient(circle, #f0e6dd 0%, #dbcbba 100%);">
+          <img src="cool.png" alt="Amul COOL Cold Coffee" style="filter: hue-rotate(200deg) saturate(0.8);" loading="lazy">
+        </div>
+        <h3 class="flavour-card-title">Cold Coffee</h3>
+        <p class="flavour-card-desc">
+          Fresh roasted Arabica beans brewed into velvety chilled milk for an electrifying energizing kick.
+        </p>
+        <div class="flavour-taste-tags">
+          <span class="flavour-tag">Roasted</span>
+          <span class="flavour-tag">Espresso</span>
+          <span class="flavour-tag">Energizing</span>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- =========================================================================
+       SECTION: CRAFT & PURITY BENTO GRID
+       ========================================================================= -->
+  <section class="section-nutrition" id="craft">
+    <div class="section-header">
+      <span class="section-eyebrow">Nutritional Integrity</span>
+      <h2 class="section-headline">Goodness in Every Drop</h2>
+      <p class="section-subtext">
+        Crafted under state-of-the-art cooperative dairy standards to deliver pure strength and uncompromised taste.
+      </p>
+    </div>
+
+    <div class="bento-grid">
+      
+      <!-- Bento 1: 100% Real Milk (Span 8) -->
+      <div class="bento-card bento-col-8">
+        <div>
+          <div class="bento-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>
+            </svg>
+          </div>
+          <h3>Sourced Directly from 3.6M Farmers</h3>
+          <p>
+            Amul operates the world's most transparent cooperative dairy network. Every bottle honors Indian farmers with fair remuneration and the purest wholesome milk without artificial stabilizers.
+          </p>
+        </div>
+        <div style="margin-top: 24px; display: flex; gap: 32px;">
+          <div>
+            <div class="bento-stat-num">3.6M+</div>
+            <div class="bento-stat-label">Farmer Partners</div>
+          </div>
+          <div>
+            <div class="bento-stat-num">100%</div>
+            <div class="bento-stat-label">Pure Cow & Buffalo Milk</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Bento 2: Protein Power (Span 4) -->
+      <div class="bento-card bento-col-4">
+        <div>
+          <div class="bento-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <circle cx="12" cy="12" r="10"/>
+              <path d="M8 14s1.5 2 4 2 4-2 4-2"/>
+              <line x1="9" y1="9" x2="9.01" y2="9"/>
+              <line x1="15" y1="9" x2="15.01" y2="9"/>
+            </svg>
+          </div>
+          <h3>Essential Calcium & Protein</h3>
+          <p>
+            Fortified by nature to recharge your vitality throughout the day. Perfect post-workout cooling fuel.
+          </p>
+        </div>
+        <div>
+          <div class="bento-stat-num">6.5g</div>
+          <div class="bento-stat-label">Natural Dairy Protein / Pack</div>
+        </div>
+      </div>
+
+      <!-- Bento 3: Hygienically Sterilized (Span 6) -->
+      <div class="bento-card bento-col-6">
+        <div>
+          <div class="bento-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+            </svg>
+          </div>
+          <h3>Retort Sterilization Technology</h3>
+          <p>
+            Packaged under aseptic conditions so you can store it unopened for up to 6 months at room temperature without any chemical preservatives.
+          </p>
+        </div>
+        <div style="margin-top: 20px;">
+          <span style="color: var(--color-primary-rose); font-weight: 700; font-size: 0.9rem;">✓ ZERO ARTIFICIAL PRESERVATIVES</span>
+        </div>
+      </div>
+
+      <!-- Bento 4: Best Served at 4°C (Span 6) -->
+      <div class="bento-card bento-col-6">
+        <div>
+          <div class="bento-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/>
+            </svg>
+          </div>
+          <h3>Ice Cold Bliss at 4°C</h3>
+          <p>
+            Best consumed chilled straight out of the refrigerator. Shake well before opening to re-activate the silky whipped microfoam.
+          </p>
+        </div>
+        <div style="margin-top: 20px;">
+          <span style="color: var(--color-gold); font-weight: 700; font-size: 0.9rem;">★ SHAKE WELL & TASTE THE SPLASH</span>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- =========================================================================
+       SECTION: THE GRAND FINALE KEY VISUAL BANNER
+       ========================================================================= -->
+  <section class="section-finale" id="finale">
+    <img src="End.jpeg" alt="Amul COOL Rose Finale Splash" class="finale-bg-image" loading="lazy">
+    <div class="finale-gradient-overlay"></div>
+
+    <div class="finale-content-wrap">
+      <div class="finale-text-col">
+        <div class="finale-tag">Ready for Refreshment</div>
+        <h2 class="finale-title">
+          Taste The <span>Splash of Pure Joy</span>
+        </h2>
+        <p class="finale-desc">
+          Grab your bottle of Amul COOL Gold Exotic Rose at your nearest Amul Parlour, supermarket, or have a crate delivered to your doorstep in minutes.
+        </p>
+        <div class="finale-buttons">
+          <a href="https://amul.com" target="_blank" rel="noopener" class="btn-gold">
+            <span>Order On Amul.com</span>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+              <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+              <polyline points="15 3 21 3 21 9"></polyline>
+              <line x1="10" y1="14" x2="21" y2="3"></line>
+            </svg>
+          </a>
+          <a href="#hero-sequence" class="btn-outline-white">
+            <span>Replay Animation</span>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <polyline points="1 4 1 10 7 10"></polyline>
+              <path d="M3.51 15a9 9 0 1 0 2.13-9.36L1 10"></path>
+            </svg>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- =========================================================================
+       FOOTER
+       ========================================================================= -->
+  <footer class="site-footer">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <h4>Amul COOL</h4>
+        <p>
+          Gujarat Cooperative Milk Marketing Federation Ltd. (GCMMF), Anand, Gujarat, India. The pioneer of the White Revolution.
+        </p>
+      </div>
+
+      <div class="footer-col">
+        <h5>Explore</h5>
+        <ul>
+          <li><a href="#hero-sequence">Experience</a></li>
+          <li><a href="#flavours">All Flavours</a></li>
+          <li><a href="#craft">Nutrition & Milk</a></li>
+          <li><a href="#finale">Find a Store</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h5>Flavours</h5>
+        <ul>
+          <li><a href="#flavours">Exotic Rose</a></li>
+          <li><a href="#flavours">Kesar Pista</a></li>
+          <li><a href="#flavours">Elaichi Supreme</a></li>
+          <li><a href="#flavours">Cold Coffee</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h5>Connect</h5>
+        <ul>
+          <li><a href="https://amul.com" target="_blank" rel="noopener">Official Website</a></li>
+          <li><a href="https://twitter.com/Amul_Coop" target="_blank" rel="noopener">Twitter / X</a></li>
+          <li><a href="https://instagram.com/amul_india" target="_blank" rel="noopener">Instagram</a></li>
+          <li><a href="mailto:care@amul.coop">Customer Support</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <p>&copy; 2026 GCMMF (Amul). Crafted with GSAP & Lenis for an authentic interactive brand experience.</p>
+      <p>The Taste of India™</p>
+    </div>
+  </footer>
+
+  <!-- Application Logic -->
+  <script src="app.js"></script>
+</body>
+</html>
