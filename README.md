@@ -2,6 +2,10 @@
 
 A visually rich, animated product landing page for Amul Kool, built with HTML, CSS, and JavaScript. The project includes a smooth scrolling experience, GSAP-driven animations, a preloader, and a canvas-based image sequence that simulates a premium product reveal.
 
+## Live Demo
+
+[View the live website](https://ani1-tau.vercel.app/)
+
 ## Project Overview
 
 This website is designed as a modern marketing landing page for an Amul Kool beverage campaign. It uses:
